@@ -14,7 +14,7 @@
   padding: 8px;
 }
 
-.header a:active {
+.header .router-link-exact-active {
   color: #35495e;
 }
 
