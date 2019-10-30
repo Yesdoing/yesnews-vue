@@ -6,6 +6,7 @@
 
 <script>
 import { fetchJobsList } from '../api';
+
 export default {
   data() {
     return {
