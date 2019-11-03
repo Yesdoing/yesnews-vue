@@ -2,15 +2,18 @@
   <div>
     <ul class="jobs-list">
       <li v-for="(job, index) in this.$store.state.jobs" :key="index" class="post">
+        <div class="points">
+          {{ job.points || 0 }}
+        </div>
         <div>
           <p class="jobs-title">
             <a :href="job.url">{{ job.title }}</a>
           </p>
           <small class="link-text">
             {{ job.time_ago }}, 
-            <router-link :to="`/user/${job.user}`" class="link-text">
+            <a :href="job.url" class="link-text">
               {{ job.domain }}
-            </router-link>
+            </a>
           </small>    
         </div>
       </li>
@@ -41,8 +44,15 @@ export default {
   align-items: center;
   list-style: none;
   border-bottom: 1px solid #eee;
+}
+
+.points {
+  display: flex;
+  width: 80px;
   height: 60px;
-  padding-left: 80px;
+  align-items: center;
+  justify-content: center;
+  color: #42b883;
 }
 
 .jobs-title {
