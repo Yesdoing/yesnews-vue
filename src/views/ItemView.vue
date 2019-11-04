@@ -1,7 +1,11 @@
 <template>
   <div>
     <section>
-      <div class="user-container">
+      <user-profile :info="fetchedItem">
+        <div slot="username">{{ fetchedItem.user }}</div>
+        <template slot="time">{{ fetchedItem.time_ago }}</template>
+      </user-profile>
+      <!-- <div class="user-container">
         <div>
           <i class="fas fa-user"></i>
         </div>
@@ -13,7 +17,9 @@
             {{ fetchedItem.time_ago}}
           </div>
         </div>
-      </div>
+      </div> -->
+    </section>
+    <section>
       <h2>{{ fetchedItem.title }}</h2>
     </section>
     <section>
@@ -24,10 +30,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-
+import UserProfile from '../components/UserProfile';
 export default {
   computed: {
     ...mapGetters(['fetchedItem']),
+  },
+  components: {
+    UserProfile
   },
   created() {
     const askId = this.$route.params.id;
