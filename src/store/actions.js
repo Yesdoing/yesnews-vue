@@ -5,6 +5,7 @@ export default {
     fetchNewsList()
       .then(({data}) => {
         commit('SET_NEWS', data);
+        return data;
       }).catch(e => {
         console.log(e);
       });
