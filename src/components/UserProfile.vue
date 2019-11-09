@@ -6,25 +6,30 @@
     <div class="user-description">
       <slot name="username"></slot>
       <!-- <div>
-        {{ userInfo.id }}
+        username: {{ info.id }}
       </div> -->
       <!-- <router-link :to="`/user/${user.id}`">{{ user.user}}</router-link> -->
       <div class="time">
-        <!-- {{ userInfo.created }} -->
         <slot name="time"></slot>
-        <slot name="karma"></slot>
+        <!-- time: {{ info.created }} -->
       </div>
+      <slot name="karma"></slot>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    userInfo() {
-      return this.$store.state.user;
+  props: {
+    info: {
+      type: Object
     }
   }
+  // computed: {
+  //   userInfo() {
+  //     return this.$store.state.user;
+  //   }
+  // }
 };
 </script>
 

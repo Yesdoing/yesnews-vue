@@ -18,7 +18,7 @@
             {{ fetchedItem.time_ago}}
           </div>
         </div>
-      </div> -->
+      </div>-->
     </section>
     <section>
       <h2>{{ fetchedItem.title }}</h2>
@@ -32,9 +32,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import UserProfile from '../components/UserProfile';
+
 export default {
+  components: {
+    UserProfile
+  },
   computed: {
-    ...mapGetters(['fetchedItem']),
+    ...mapGetters(["fetchedItem"])
   },
   components: {
     UserProfile
@@ -42,24 +46,24 @@ export default {
   created() {
     const askId = this.$route.params.id;
 
-    this.$store.dispatch('FETCH_ITEM', askId);
+    this.$store.dispatch("FETCH_ITEM", askId);
   }
-}
+};
 </script>
 
 <style scoped>
-  .user-container {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-  }
-  .fa-user {
-    font-size: 2.5rem;
-  }
-  .user-description {
-    padding-left: 8px;
-  }
-  .time {
-    font-size: 0.7rem;
-  }
+.user-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+.fa-user {
+  font-size: 2.5rem;
+}
+.user-description {
+  padding-left: 8px;
+}
+.time {
+  font-size: 0.7rem;
+}
 </style>

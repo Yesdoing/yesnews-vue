@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="item in listItem" class="post">
+      <li v-for="(item, key) in listItem" class="post" :key="key">
         <div class="points">{{ item.points || 0 }}</div>
         <div>
           <p class="news-title">
@@ -27,15 +27,6 @@
 
 <script>
 export default {
-  created() {
-    if (this.$route.name === "news") {
-      this.$store.dispatch("FETCH_NEWS");
-    } else if (this.$route.name === "ask") {
-      this.$store.dispatch("FETCH_ASK");
-    } else if (this.$route.name === "jobs") {
-      this.$store.dispatch("FETCH_JOBS");
-    }
-  },
   computed: {
     listItem() {
       if (this.$route.name === "news") {
